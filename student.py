@@ -1,17 +1,19 @@
 def list_courses(id, c_list, r_list):
-
     # ------------------------------------------------------------
     # This function displays and counts courses a student has
     # registered for.  It has three parameters: id is the ID of the
     # student; c_list is the course list; r_list is the list of
     # class rosters. This function has no return value.
     # -------------------------------------------------------------
-
-    pass # temporarily avoid empty function definition
+    print("Courses registered")
+    for course in c_list:
+        c_index = c_list.index(course)
+        # print(course, str(c_index))
+        if id in r_list[c_index]:
+            print(course)
 
 
 def add_course(id, c_list, r_list, m_list):
-
     # ------------------------------------------------------------
     # This function adds a student to a course.  It has four
     # parameters: id is the ID of the student to be added; c_list
@@ -26,11 +28,25 @@ def add_course(id, c_list, r_list, m_list):
     # function has no return value.
     # -------------------------------------------------------------
 
-    pass # temporarily avoid empty function definition
+    while True:
+        course_to_add = input("Enter course you want to add: ")
+        if course_to_add not in c_list:
+            print("Course not found")
+            print("")
+        elif course_to_add in c_list:
+            c_index = c_list.index(course_to_add)
+            course = r_list[c_index]
+            if id not in course:
+                course.append(id)
+                print("Course added", c_list.index(course_to_add), r_list[c_list.index(course_to_add)])
+                print("")
+                break
+            else:
+                print("You are already enrolled in that course.")
+                print("")
 
 
 def drop_course(id, c_list, r_list):
-
     # ------------------------------------------------------------
     # This function drops a student from a course.  It has three
     # parameters: id is the ID of the student to be dropped;
@@ -43,4 +59,18 @@ def drop_course(id, c_list, r_list):
     # no problem.  This function has no return value.
     # -------------------------------------------------------------
 
-    pass # temporarily avoid empty function definition
+    while True:
+        course_to_drop = input("Enter course you want to drop: ")
+        if course_to_drop not in c_list:
+            print("Course not found")
+        elif course_to_drop in c_list:
+            c_index = c_list.index(course_to_drop)
+            course = r_list[c_list.index(course_to_drop)]
+            if id in course:
+                course.remove(id)
+                print("Course dropped", c_list.index(course_to_drop), r_list[c_list.index(course_to_drop)])
+                print("")
+                break
+            else:
+                print("You are not enrolled in that course.")
+                print("")
