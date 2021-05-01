@@ -26,9 +26,11 @@ In this project, students will demonstrate the abilities to:
 - Add comments to Python code
 Project Description
 
-You have learned quite a lot about the basics of Python programming.  In this project, you will integrate what you have learned to develop a larger program.
+You have learned quite a lot about the basics of Python programming.  In this project, you will integrate what you have
+learned to develop a larger program.
 
-This program creates a class registration system.  It allows students to log in to add courses, drop courses and list courses they have registered for.
+This program creates a class registration system.  It allows students to log in to add courses, drop courses and list
+courses they have registered for.
 
 This program has 5 functions in 2 modules: a student module and a main module.
 
@@ -36,42 +38,70 @@ You must define the following functions in the student module.
 
 
 
-Function
-Specification
+Function Specification
+
 add_course(id, c_list, r_list, m_list)
-This function adds a student to a course.  It has four parameters: id is the ID of the student to be added; c_list is the list of courses offered; r_list is the list of class rosters; m_list is the list of maximum class sizes.  This function asks user to enter the course he/she wants to add.  If the course is not offered, display error message and stop.  If the course is full, display error message and stop.  If student already registered for the course, display error message and stop.  Add student ID to the course’s roster and display a message if there is no problem.  This function has no return value.
+    This function adds a student to a course.  It has four parameters: id is the ID of the student to be added; c_list is
+    the list of courses offered; r_list is the list of class rosters; m_list is the list of maximum class sizes.
+    This function asks user to enter the course he/she wants to add.  If the course is not offered, display error message
+    and stop.  If the course is full, display error message and stop.  If student already registered for the course,
+    display error message and stop.  Add student ID to the course’s roster and display a message if there is no problem.
+    This function has no return value.
+
 drop_course(id, c_list, r_list)
-This function drops a student from a course.  It has three parameters: id is the ID of the student to be dropped; c_list is the list of courses offered; r_list is the list of class rosters. This function asks user to enter the course he/she wants to drop.  If the course is not offered, display error message and stop.  If the student is not enrolled in that course, display error message and stop.  Remove student ID from the course’s roster and display a message if there is no problem.  This function has no return value.
+    This function drops a student from a course.  It has three parameters: id is the ID of the student to be dropped;
+    c_list is the list of courses offered; r_list is the list of class rosters. This function asks user to enter the
+    course he/she wants to drop.  If the course is not offered, display error message and stop.  If the student is not
+    enrolled in that course, display error message and stop.  Remove student ID from the course’s roster and display a
+    message if there is no problem.
+
 list_courses(id, c_list, r_list)
-This function displays and counts courses a student has registered for.  It has three parameters: id is the ID of the student; c_list is the list of courses offered; r_list is the list of class rosters. This function displays the number of courses the student has registered for and which courses they are.  This function has no return value.
+    This function displays and counts courses a student has registered for.  It has three parameters: id is the ID of
+    the student; c_list is the list of courses offered; r_list is the list of class rosters. This function displays
+    the number of courses the student has registered for and which courses they are.  This function has no return value.
 
 
 You must define the following functions in the main module.
 
-Function
-Specification
+Function Specification
+
 login(id, s_list)
-This function allows a student to log in.  It has two parameters: id and s_list, which is the student list. This function asks user to enter PIN. If the ID and PIN combination is in s_list, display message of verification and return True.  Otherwise, display error message and return False.
+   This function allows a student to log in.  It has two parameters: id and s_list, which is the student list.
+   This function asks user to enter PIN. If the ID and PIN combination is in s_list, display message of verification and
+   return True.  Otherwise, display error message and return False.
+
 main()
-This function manages the whole registration system.  It has no parameter.  It creates 4 lists to store data: student list, course list, maximum class size list and roster list.  It uses a loop to serve multiple students.  Inside the loop, ask user to enter ID, and call the login function to verify student’s identity.  If login is successful, use a loop to allow student choose to add courses, drop courses or list courses the student has registered for. This function has no return value.
+   This function manages the whole registration system.  It has no parameter.  It creates 4 lists to store data: student
+   list, course list, maximum class size list and roster list.  It uses a loop to serve multiple students.  Inside the
+   loop, ask user to enter ID, and call the login function to verify student’s identity.  If login is successful, use a
+   loop to allow student choose to add courses, drop courses or list courses the student has registered for.
+   This function has no return value.
 
 
 
-This program uses a few lists to store data. To make grading easier, data will be added to these lists at the beginning of the main function.
+   This program uses a few lists to store data. To make grading easier, data will be added to these lists at the
+   beginning of the main function.
 
-student_list = [('1001', '111'), ('1002', '222'), ('1003', '333'), ('1004', '444')]
-course_list = ['CSC101', 'CSC102', 'CSC103']
-max_size_list = [3, 2, 1]
-roster_list = [['1004', '1003'], ['1001'], ['1002']]
-There are 4 students in this program.  ID and PIN of students are stored as tuples in student_list.  The first element of each tuple is student ID, while the second element is PIN.
+    student_list = [('1001', '111'), ('1002', '222'), ('1003', '333'), ('1004', '444')]
+    course_list = ['CSC101', 'CSC102', 'CSC103']
+    max_size_list = [3, 2, 1]
+    roster_list = [['1004', '1003'], ['1001'], ['1002']]
 
-Three courses are offered.  The course codes are stored in course_list.  These courses are CSC101, CSC102 and CSC103.
+    There are 4 students in this program.  ID and PIN of students are stored as tuples in student_list.  The first element
+    of each tuple is student ID, while the second element is PIN.
 
-The maximum class size of the courses offered are stored in max_size_list.  The max sizes of CSC101, CSC102 and CSC103 are 3, 2 and 1, respectively.
+    Three courses are offered.  The course codes are stored in course_list.  These courses are CSC101, CSC102 and CSC103.
 
-Rosters of the three classes offered are stored as three lists, which are three elements of roster_list, which is actually a list of lists.  Students 1004 and 1003 are enrolled in CSC101.  Student 1001 is enrolled in CSC102.  Student 1002 is enrolled in CSC103.
+    The maximum class size of the courses offered are stored in max_size_list.  The max sizes of CSC101, CSC102 and CSC103
+    are 3, 2 and 1, respectively.
 
-The program should have a loop to create multiple student sessions.  In each session, ask user to enter ID, then call the login function to verify the student’s identity.  If login is successful, use a loop to allow the student to add courses, drop courses and list courses registered.
+    Rosters of the three classes offered are stored as three lists, which are three elements of roster_list, which is
+    actually a list of lists.  Students 1004 and 1003 are enrolled in CSC101.  Student 1001 is enrolled in CSC102.
+    Student 1002 is enrolled in CSC103.
+
+    The program should have a loop to create multiple student sessions.  In each session, ask user to enter ID, then call
+    the login function to verify the student’s identity.  If login is successful, use a loop to allow the student to add
+    courses, drop courses and list courses registered.
 
 The following is an example.
 
