@@ -5,13 +5,16 @@ def list_courses(id, c_list, r_list):
     # student; c_list is the course list; r_list is the list of
     # class rosters. This function has no return value.
     # -------------------------------------------------------------
-    print("Courses registered")
+    print("Courses registered:")
+    num_courses = 0
     for course in c_list:
         c_index = c_list.index(course)
         # print(course, str(c_index))
         if id in r_list[c_index]:
+            num_courses = num_courses + 1
             print(course)
-
+    print("Total number:", num_courses)
+    print("")
 
 def add_course(id, c_list, r_list, m_list):
     # ------------------------------------------------------------
@@ -30,20 +33,28 @@ def add_course(id, c_list, r_list, m_list):
 
     while True:
         course_to_add = input("Enter course you want to add: ")
+        course_to_add = course_to_add.upper().strip()
         if course_to_add not in c_list:
             print("Course not found")
             print("")
+            break
         elif course_to_add in c_list:
             c_index = c_list.index(course_to_add)
             course = r_list[c_index]
+            max_size = m_list[c_index]
             if id not in course:
-                course.append(id)
-                print("Course added", c_list.index(course_to_add), r_list[c_list.index(course_to_add)])
-                print("")
+                if len(course) >= max_size:
+                    print("Course already full.")
+                    print("")
+                else:
+                    course.append(id)
+                    print("Course added")
+                    print("")
                 break
             else:
                 print("You are already enrolled in that course.")
                 print("")
+                break
 
 
 def drop_course(id, c_list, r_list):
@@ -61,16 +72,18 @@ def drop_course(id, c_list, r_list):
 
     while True:
         course_to_drop = input("Enter course you want to drop: ")
+        course_to_drop = course_to_drop.upper().strip()
         if course_to_drop not in c_list:
             print("Course not found")
         elif course_to_drop in c_list:
             c_index = c_list.index(course_to_drop)
-            course = r_list[c_list.index(course_to_drop)]
+            course = r_list[c_index]
             if id in course:
                 course.remove(id)
-                print("Course dropped", c_list.index(course_to_drop), r_list[c_list.index(course_to_drop)])
+                print("Course dropped")
                 print("")
                 break
             else:
                 print("You are not enrolled in that course.")
                 print("")
+                break

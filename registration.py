@@ -27,25 +27,34 @@ def main():
     max_size_list = [3, 2, 1]
     while True:
         student_id = input("Enter ID to log in, or 0 to quit: ")
+        student_id.upper().strip()
         if student_id == "0":
             exit()
         if login(student_id, student_list):
             print("ID and PIN verified")
             print("")
+            while True:
+                course_action = input("Enter 1 to add course, 2 to drop course, 3 to list courses, 0 to exit: ")
+                if course_action == "1":
+                    student.add_course(student_id, course_list, roster_list, max_size_list)
+                elif course_action == "2":
+                    student.drop_course(student_id, course_list, roster_list)
+                    # print(roster_list)
+                elif course_action == "3":
+                    student.list_courses(student_id, course_list, roster_list)
+                elif course_action == "0":
+                    print("Session ended.")
+                    print("")
+                    break
+                else:
+                    print("Invalid option")
+                    print("")
         else:
             print("ID or PIN incorrect")
             print("")
             continue
-        course_action = input("Enter 1 to add course, 2 to drop course, 3 to list courses, 0 to exit: ")
-        if course_action == "1":
-            student.add_course(student_id, course_list, roster_list, max_size_list)
-        elif course_action == "2":
-            student.drop_course(student_id, course_list, roster_list)
-            print(roster_list)
-        elif course_action == "3":
-            student.list_courses(student_id, course_list, roster_list)
-        else:
-            exit()
+
+
 
 
 def login(id, s_list):
@@ -64,4 +73,9 @@ def login(id, s_list):
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except ValueError:
+        print("There was a problem with your input")
+    else:
+        print("Thank you, come again")
