@@ -31,9 +31,11 @@ def main():
             exit()
         if login(student_id, student_list):
             print("ID and PIN verified")
+            print("")
         else:
             print("ID or PIN incorrect")
-        print("")
+            print("")
+            continue
         course_action = input("Enter 1 to add course, 2 to drop course, 3 to list courses, 0 to exit: ")
         if course_action == "1":
             student.add_course(student_id, course_list, roster_list, max_size_list)
@@ -54,10 +56,11 @@ def login(id, s_list):
     # combination is in s_list, display message of verification and
     # return True. Otherwise, display error message and return False.
     # -------------------------------------------------------------
-    while True:
-        pin_number = input("Enter PIN: ")
-        break
-    return True
+    pin_number = input("Enter PIN: ")
+    for s in s_list:
+        if id == s[0] and pin_number == s[1]:
+            return True
+    return False
 
 
 if __name__ == '__main__':
